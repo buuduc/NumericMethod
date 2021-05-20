@@ -1,3 +1,15 @@
-f = @(x,y) x^2-y^2
-h=0.1
-EulerMethod(f,h)
+clc;
+clear all;
+dy= @(x,y) 4*x+x*sin(x+2*y);
+Y(1)=3.2;
+finalPoint=2.2
+% X(1)=1;
+range = [1 2.2]
+h=0.2
+X=[range(1):h:range(2)]
+for i =1 :length(X) -1 
+    Y(i+1)=Y(i)+h*dy(X(i),Y(i))
+end
+X=X';
+Y=Y';
+table(X,Y)
