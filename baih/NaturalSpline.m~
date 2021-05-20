@@ -1,0 +1,21 @@
+X=[0 1 2 3]
+Y=[1 2 4 8]
+h=[]
+h_y=[]
+for i=2:length(X)
+    h=[h X(i)-X(i-1)]
+    h_y=[h_y Y(i)-Y(i-1)]
+end
+%% tao ma tran A
+A=[1]
+for i = 1:length(h)-1
+    A(i+1,[i,i+1])=[h(i) 2*(h(i)+h(i+1))]
+end
+A(length(X),length(X))=1
+%% tao ma tran B
+B=[]
+for i=1:length(h_y)-1
+    B=[B;3*(h_y(i+1)/h(i+1)-h_y(i)/h(i))]
+end
+B=[0;B;0]
+A)*B
