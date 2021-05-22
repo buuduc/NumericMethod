@@ -8,7 +8,7 @@ y0=3.2;
 h=0.2
 xEnd=2.2
 
-%% hanlde
+%% handle
 X= [x0];
 Y=[y0];
 X=[x0:h:xEnd]';

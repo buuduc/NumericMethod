@@ -5,6 +5,11 @@ x0=1; %x0 = doe, bat dau
 y0=3.2
 finalPoint=2.2;
 h=0.2
+
+
+
+
+
 Y=[y0];
 range = [x0 finalPoint];
 X=[range(1):h:range(2)]
