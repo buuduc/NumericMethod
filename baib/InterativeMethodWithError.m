@@ -1,10 +1,10 @@
 
 
 %% input
-function [a]=InterativeMethod(x,g,x0,range,n)
+function [a]=InterativeMethodWithError(x,g,x0,range,error)
 
 X=[x0]
-deltaHauNghiem=[0]
+deltaHauNghiem=[inf]
 %% tim he so co q
 g1=diff(g,x,1)
 linrange=linspace(range(1),range(2));
@@ -14,14 +14,20 @@ if q>=0 && q<1
     disp('hoi tu')
 end
 
+n=0;
+
 %% bat dau giai
-for i=1:n
+while deltaHauNghiem(end)>error
    X=[X;double(subs(g,x,X(end)))] ;
-   deltaHauNghiem=[deltaHauNghiem;double((q/(1-q))*(X(end)-X(end-1)))];
+%    fprintf('lan lap thu: %d',n)
+   n=n+1;
+   deltaHauNghiem=[deltaHauNghiem;double(abs((q/(1-q))*(X(end)-X(end-1))))];
 end
 
 %% sai so tien nghiem
+% syms n
 deltaTienNghiem=q^n*abs(X(2)-X(1))/(1-q)
+% ceil(solve(deltaTienNghiem==error,n))
 %ve bang
 n=[0:n]';
 

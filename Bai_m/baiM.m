@@ -2,14 +2,14 @@
 clc ;
 clear all;
 %% nhap in put dau vao
-p= @(x) x^3
-q=@(x) sin(4*x)
-r=@(x) -log(x)
-f=@(x) tan(x)
-y_knew=[1 0.7; ...
-        1.4 2.8] %% [xi yi;]
+p= @(x) x+2
+q=@(x) x^4
+r=@(x) -10
+f=@(x) -4*x+x*sin(x)
+y_knew=[0 2.1; ...
+        1 0.1] %% [xi yi;]
 h=0.2
-range = [1.0 1.6]
+range = [0 1]
 
 
 %% giai thuat tinh toan
@@ -30,13 +30,18 @@ for k=2:length(X)-1
     
 end
 heSoTuDo=heSoTuDo-heSo*Y
+deletePos=[];
 for i =1:size(y_knew,1)
-    pos=uint8(abs((y_knew(i,1)-range(1))/h+1))
-    heSo(:,pos)=[];
-    X(pos)=[];
+    pos=uint8(abs((y_knew(i,1)-range(1))/h+1));
+%     heSo(:,pos)=[];
+    deletePos=[deletePos pos];
+%     X(pos)=[];
 
 end
+X(deletePos)=[];
+heSo(:,deletePos)=[];
+
 heSo
 result=linsolve(heSo,heSoTuDo);
-result2=inv(heSo)*heSoTuDo
-table(X,result,result2)
+% result2=inv(heSo)*heSoTuDo
+table(X,result)

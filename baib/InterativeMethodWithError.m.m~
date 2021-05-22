@@ -1,7 +1,7 @@
 
 
 %% input
-function [a]=InterativeMethod(x,g,x0,range,n)
+function [a]=InterativeMethodWithError(x,g,x0,range,error)
 
 X=[x0]
 deltaHauNghiem=[0]
@@ -21,7 +21,9 @@ for i=1:n
 end
 
 %% sai so tien nghiem
+syms n
 deltaTienNghiem=q^n*abs(X(2)-X(1))/(1-q)
+double(solve(deltaTienNghiem))
 %ve bang
 n=[0:n]';
 

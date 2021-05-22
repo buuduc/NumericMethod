@@ -56,13 +56,14 @@ function GaussSeidel(heSo,heSoTuDo,initVar,soLanLap,key)
     for i=1:soLanLap
        fprintf('lan lap thu %d \n',i)
         for row=1:m
-            initVar(row)=heSo(row,:)*initVar+heSoTuDo(row)
+            initVar(row)=heSo(row,:)*initVar+heSoTuDo(row);
         end
         if i==1 
             f=max(abs((heSoTuDo-initVar)))*(t.^soLanLap/(1-t));
             fprintf('sai so tien nghiem cua bai la \n')
             disp(f)
-         end
+        end
+         disp(initVar);
     end
     hau=max(abs((x-initVar)))*(t/(1-t));
     fprintf('sai so hau nghiem cua bai la \n' )
