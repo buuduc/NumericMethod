@@ -25,10 +25,12 @@ end
 for i=1:n
     b=heSo(:,i);
     [j,x]=max(abs(b));
+    %%% code hoan doi vi tri
     c=heSo(x,:);
     heSo(x,:)=heSo(i,:);
     heSo(i,:)=c;
 end
+%% code chuyen hang ma tran ve dang lap
 for i=1:m 
     heSoTuDo(i,1)=heSoTuDo(i,1)/heSo(i,i);
     heSo(i,:)=(-1)*heSo(i,:)/heSo(i,i);

@@ -26,6 +26,6 @@ for k=1:length(C)-1
     a=Y(k);
     b=(Y(k+1)-Y(k))/h(k)-(h(k)*(C(k+1)+2*C(k) ))/3;
     d=(C(k+1)-C(k))/(3*h(k));
-    result(k,[1,2,3])=[a b d];
+    result(k,[1,2,3,4])=[a b C(k) d];
 
 end
